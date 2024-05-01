@@ -20,9 +20,9 @@ function App() {
 
   return (
     <>
-      <form>
+      <form onSubmit={handleReg}>
         <input type="file" onChange={(e) => setFile(e.target.files[0])} />
-        <button onClick={handleReg}>Upload</button>
+        <button >Upload</button>
       </form>
       {/* {  file ? <img src={URL.createObjectURL(file)} width={500} height={800} alt="" /> : "no image"}  */}
     </>
