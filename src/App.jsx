@@ -4,28 +4,27 @@ import "./App.css";
 import axios from "axios";
 
 function App() {
-   const [file,setFile]= useState()
+  const [file, setFile] = useState();
 
+  const handleReg = (e) => {
+    e.preventDefault();
 
-    const handleUpload = (e)=>{
-      e.preventDefault()
-  const formData = new FormData()
-   formData.append('file',file)
-      console.log(file)
-       axios.post('http://localhost:5000/upload',formData)
-       .then(res=>{
-        console.log(res)
-       })
+    const formdata = new FormData();
 
-         
-    }
+    formdata.append("file", file);
+
+    axios.post("http://localhost:5000/upload", formdata).then((res) => {
+      console.log(res.data);
+    });
+  };
+
   return (
     <>
-      <form  onChange={e=> setFile(e.target.files[0])} >
-        <input type="file" name="avatar" />
-        <button onClick={handleUpload}>Upload</button>
+      <form>
+        <input type="file" onChange={(e) => setFile(e.target.files[0])} />
+        <button onClick={handleReg}>Upload</button>
       </form>
-      {  file ? <img src={URL.createObjectURL(file)} width={500} height={800} alt="" /> : "no image"} 
+      {/* {  file ? <img src={URL.createObjectURL(file)} width={500} height={800} alt="" /> : "no image"}  */}
     </>
   );
 }
